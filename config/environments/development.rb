@@ -29,4 +29,6 @@ Collegeproject2::Application.configure do
   config.assets.debug = true
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  Paperclip.options[:command_path] = 'C:\Program Files\ImageMagick-6.8.7-Q16'
 end
