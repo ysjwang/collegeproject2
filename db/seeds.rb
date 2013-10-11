@@ -27,7 +27,7 @@
 #  zip                    :string(255)
 #  country                :string(255)
 
-Cbo.create({
+cbo1 = Cbo.create({
 	email: 'cbo1@email.com',
 	password: 'password',
 	password_confirmation: 'password',
@@ -40,8 +40,10 @@ Cbo.create({
 	zip: '02215',
 	country: 'United States'
 })
+cbo1.category_list.add("Manual Labor", "Non-profit")
+cbo1.save
 
-Cbo.create({
+cbo2 = Cbo.create({
 	email: 'cbo2@email.com',
 	password: 'password',
 	password_confirmation: 'password',
@@ -54,8 +56,10 @@ Cbo.create({
 	zip: '02215',
 	country: 'United States'
 })
+cbo2.category_list.add("Non-profit", "Children", "Teaching")
+cbo2.save
 
-Cbo.create({
+cbo3 = Cbo.create({
 	email: 'cbo3@email.com',
 	password: 'password',
 	password_confirmation: 'password',
@@ -68,8 +72,10 @@ Cbo.create({
 	zip: '02215',
 	country: 'United States'
 })
+cbo3.category_list.add("Teaching", "Manual Labor", "Manufacturing")
+cbo3.save
 
-Cbo.create({
+cbo4 = Cbo.create({
 	email: 'cbo4@email.com',
 	password: 'password',
 	password_confirmation: 'password',
@@ -82,8 +88,10 @@ Cbo.create({
 	zip: '02215',
 	country: 'United States'
 })
+cbo4.category_list.add("Volunteer", "Teaching", "Computer", "Technology")
+cbo4.save
 
-Cbo.create({
+cbo5 = Cbo.create({
 	email: 'cbo5@email.com',
 	password: 'password',
 	password_confirmation: 'password',
@@ -96,8 +104,10 @@ Cbo.create({
 	zip: '02215',
 	country: 'United States'
 })
+cbo5.category_list.add("Farming")
+cbo5.save
 
-Cbo.create({
+cbo6 = Cbo.create({
 	email: 'cbo6@email.com',
 	password: 'password',
 	password_confirmation: 'password',
@@ -110,6 +120,8 @@ Cbo.create({
 	zip: '02215',
 	country: 'United States'
 })
+cbo6.category_list.add("Volunteer", "Children", "Non-profit")
+cbo6.save
 
 
 ### STUDENTS ###
@@ -183,3 +195,7 @@ Student.create({
 	school: 'Harvard University',
 	about_me: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 })
+
+
+## Categories...
+

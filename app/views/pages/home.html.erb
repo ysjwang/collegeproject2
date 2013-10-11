@@ -108,7 +108,7 @@ END REAL */
     				<h3>Filter</h3>
 
     				<%= form_tag pages_home_path, :method => :get do %>
-    				<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :include_blank => "All Categories" %>
+    				<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :prompt => "All Categories" %>
     				<br /><br />
     				<%= submit_tag "Apply Filter", :name => nil%>
     				<% end %>	
