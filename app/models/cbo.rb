@@ -73,7 +73,7 @@ class Cbo < ActiveRecord::Base
   
   has_attached_file :image1, 
     :styles => { :medium => "570x270>", :thumb => "210x100>" },
-    :default_url => "570x270.gif",
+    :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/:style/:id/:filename",
@@ -84,7 +84,7 @@ class Cbo < ActiveRecord::Base
   
   has_attached_file :image2, 
     :styles => { :medium => "570x270>", :thumb => "210x100>" },
-    :default_url => "570x270.gif",
+    :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/:style/:id/:filename",
@@ -95,7 +95,7 @@ class Cbo < ActiveRecord::Base
   
   has_attached_file :image3, 
     :styles => { :medium => "570x270>", :thumb => "210x100>" },
-    :default_url => "570x270.gif",
+    :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/:style/:id/:filename",
@@ -106,7 +106,7 @@ class Cbo < ActiveRecord::Base
   
   has_attached_file :image4, 
     :styles => { :medium => "570x270>", :thumb => "210x100>" },
-    :default_url => "570x270.gif",
+    :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/:style/:id/:filename",
@@ -118,7 +118,7 @@ class Cbo < ActiveRecord::Base
   
   has_attached_file :image5, 
     :styles => { :medium => "570x270>", :thumb => "210x100>" },
-    :default_url => "570x270.gif",
+    :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/:style/:id/:filename",

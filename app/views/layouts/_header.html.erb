@@ -8,13 +8,15 @@
                 <li class="nav-sub-event"><%= link_to "Organizations", "#" %>
                 	<div class="nav-sub-container">
                     	<ul>
-                        	<li><%= link_to "My Organizations", cbos_path %></li>
+                        	<% if student_signed_in? %><li><%= link_to "My Organizations", cbos_path %></li><% end %>
                             <li><%= link_to "Nearby Organizations", cbos_path %></li>
-                            <li><%= link_to "All Organizations", '/pages/allorganizations' %></li>
+                            <li><%= link_to "All Organizations", cbos_path %></li>
+                            <% if !student_signed_in? && !cbo_signed_in? %><li><%= link_to "Add Yours!", new_cbo_registration_path %></li><% end %>
                         </ul>
                     </div>
                 </li>
                 
+                <!--
                 <li class="nav-sub-event"><%= link_to "Communities", "#" %>
                 	<div class="nav-sub-container">
                     	<ul>
@@ -25,7 +27,7 @@
                         </ul>
                     </div>
                 </li>
-
+                !-->
 				<li><%= link_to "Our Mission", pages_mission_path %></li>
             </ul>
 			

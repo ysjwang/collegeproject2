@@ -3,21 +3,22 @@
 <%= render 'pages/map', cbos: @cbos, user_lat: @user_coordinates[0], user_lng: @user_coordinates[1] %>
 
 <div id="map_wrapper">
-   <div id="map"></div>
+  <div id="map">
+  </div>
 
-   <div id="over_map">
-      <p>
-         <center>
-            <h3>Filter</h3>
+  <div id="over_map">
+    <p>
+      <center>
+        <h4>Filter Organization Types</h4>
 
-            <%= form_tag pages_home_path, :method => :get do %>
-            <%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :prompt => "All Categories" %>
-            <br /><br />
-            <%= submit_tag "Apply Filter", :name => nil%>
-            <% end %>	
-        </center>
+        <%= form_tag pages_home_path, :method => :get do %>
+        <%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :prompt => "All Categories" %>
+        <br /><br />
+        <%= submit_tag "Apply Filter", :name => nil, :class => "btn" %>
+        <% end %>	
+      </center>
     </p>
-</div> 
+  </div> 
 </div>
 
 
@@ -25,7 +26,7 @@
 <% if !student_signed_in? %>
 
 <div id="signup-bar">
-   <h2>Discover fulfilling volunteer opportunities - with your friends, in your community.</h2>
+  <h2>Discover fulfilling volunteer opportunities - with your friends, in your community.</h2>
 
 </div>
 <% end %>
