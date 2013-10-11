@@ -1,49 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Red Bungalo</title>
+	<title>Red Bungalo</title>
 
 	<style type="text/css" media="screen">
-	     .slides_container {
-	         width:570px;
-	         height:270px;
-	     }
-	     .slides_container div {
-	         width:570px;
-	         height:270px;
-	         display:block;
-	     }
+	.slides_container {
+		width:570px;
+		height:270px;
+	}
+	.slides_container div {
+		width:570px;
+		height:270px;
+		display:block;
+	}
 	
-		/* for map */
-		#map_wrapper { 
-			position: relative; 
-			top:-75px;
-		}
-		#over_map { 
-			position: absolute; 
-			top: 20px; 
-			right: 30px; 
-			z-index: 0; 
-			height: 150px;
-			width:200px;
-			padding:5px;
-			background-color:rgba(255,255,255,0.8);
-		}
-		
-		#over_map select {
-			width: 100%;
-		}
-  </style>
+	/* for map */
+	#map_wrapper { 
+		position: relative; 
+		top:-75px;
+	}
+	#over_map { 
+		position: absolute; 
+		top: 20px; 
+		right: 30px; 
+		z-index: 0; 
+		height: 150px;
+		width:200px;
+		padding:5px;
+		background-color:rgba(255,255,255,0.8);
+	}
 
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+	#over_map select {
+		width: 100%;
+	}
+	</style>
 
-  <!--[if lt IE9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "application" %>
+
+	<!--[if lt IE9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<%= csrf_meta_tags %>
 
 
-  <!-- Load Karla Google web font -->
-  <link href='http://fonts.googleapis.com/css?family=Karla:400,700' rel='stylesheet' type='text/css'>
+	<!-- Load Karla Google web font -->
+	<link href='http://fonts.googleapis.com/css?family=Karla:400,700' rel='stylesheet' type='text/css'>
 
 
 	<!-- for slider for cbos !-->
@@ -58,23 +58,24 @@
 onload refers to the Javascript function that loads Google maps from googlemaps.js 
 Interior pages should have a normal <body>
 -->
-<body onload="initializeMap()">
-	
+
+<body>
+
+
+
 	<%= render 'layouts/header' %>
 	<!--
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 	!-->
-  <%= yield %>
+	<%= yield %>
 
 	<br />
-  <%= render 'layouts/footer' %>
+	<%= render 'layouts/footer' %>
 </body>
 
-<!-- Loads jquery from Google repository -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> !-->
-<!-- The following two scripts are needed only on the map page -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
 
 <!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC-ycaSbihA8ZcyIlEaUNsKtHBejgGhRSY&sensor=true" type="text/javascript"></script> !-->
 

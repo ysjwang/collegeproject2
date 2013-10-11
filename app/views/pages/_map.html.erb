@@ -1,0 +1,81 @@
+<br /><br /><br />
+
+<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' %> 
+<script type="text/javascript">
+
+// Initialize the map
+window.onload = function () {
+    initializeMap();
+}
+
+// Close all windows
+function closeInfos() {
+	if(infos.length > 0) {
+		
+		// detach info-window from marker
+		infos[0].set("marker", null);
+		
+		// close it
+		infos[0].close();
+		
+		// blank out the array
+		infos.length = 0;
+		
+	}
+}
+
+// Create the map on home page
+function initializeMap() {
+   var myOptions = {
+    center: new google.maps.LatLng(42.3583, -71.0603), // This is hardcoded...
+    zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    panControl: true,
+    streetViewControl: false,
+    mapTypeControl: false,	  
+    zoomControl: true,
+    zoomControlOptions: {
+     position: google.maps.ControlPosition.LEFT_CENTER
+ },
+ scaleControl: false,
+
+};
+var map = new google.maps.Map(document.getElementById("map"), myOptions); // add this map to the #map id element. Also save it to a 'map' variable
+
+
+// BEGIN CBO FOREACH
+infos = []; // load a blank info array
+<% cbos.each do |cbo| %>
+var title = '<%= escape_javascript(cbo.name) %>'; // CBO name going into the popup
+var html = '<strong><%= link_to escape_javascript(cbo.name), cbo %></strong><br /><%= escape_javascript(truncate(cbo.description, :length => 250, :separator => ' ')) %> <%= link_to escape_javascript("(more)"), cbo %>'; // CBO description going into the opoup
+var myLatLng = new google.maps.LatLng(<%= cbo.latitude || 42.3583 %>, <%= cbo.longitude || -71.0603 %>);
+
+var marker = new google.maps.Marker({
+	title:title,
+	content:html,
+	map:map,
+	draggable:false,
+	position:myLatLng,
+});
+
+// When someone clicks on a marker...
+google.maps.event.addListener(marker, 'click', function() {
+	// close previous windows
+	closeInfos();
+
+	// attach info 
+	var info = new google.maps.InfoWindow({content: this.content});
+
+	// open info 
+	info.open(map, this);
+
+	// keep the handle for closing it on next click event 
+	infos[0] = info;
+});
+
+<% end %>
+// END CBO FOREACH
+
+}
+
+</script>

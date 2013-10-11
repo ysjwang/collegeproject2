@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
     
     # Find the city they are in
-    if (!request.location.city.empty? && !request.location.state.empty? && !request.location.country.empty?)
+    if (!request.location.city.blank? && !request.location.state.blank? && !request.location.country.blank?)
       puts "Case 1"
       @user_location = request.location.city + ', ' + request.location.state + ', ' + request.location.country
     else
@@ -10,14 +10,14 @@ class PagesController < ApplicationController
       @user_location = 'Boston, MA, USA'
     end
     
-    @user_location = "Boston, MA, USA"
+    @user_location = "Boston, MA, USA" # Force this, for testing purposes
 
     # Geocode their location
-    user_coordinates = Geocoder.coordinates(@user_location) || [42.3584308, -71.0597732] 
+    user_coordinates = Geocoder.coordinates(@user_location) || [42.3584308, -71.0597732] # force this, for testing purposes
     
     
     
-    # fategory filter
+    # category filter
     @categories = Cbo.category_counts
 
     if (!params[:category] || params[:category] == '')
