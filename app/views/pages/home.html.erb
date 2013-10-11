@@ -1,6 +1,6 @@
 
 
-<%= render 'pages/map', cbos: @cbos %>
+<%= render 'pages/map', cbos: @cbos, user_lat: @user_coordinates[0], user_lng: @user_coordinates[1] %>
 
 <div id="map_wrapper">
    <div id="map"></div>

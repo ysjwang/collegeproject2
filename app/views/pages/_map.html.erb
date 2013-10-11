@@ -27,7 +27,7 @@ function closeInfos() {
 // Create the map on home page
 function initializeMap() {
    var myOptions = {
-    center: new google.maps.LatLng(42.3583, -71.0603), // This is hardcoded...
+    center: new google.maps.LatLng(<%= user_lat %>, <%= user_lng %>), // This is hardcoded...
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     panControl: true,
