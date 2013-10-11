@@ -1,19 +1,12 @@
-require 'test_helper'
-
-class CommunityTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end
 # == Schema Information
 #
 # Table name: communities
 #
-#  id          :integer         not null, primary key
+#  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #  latitude    :float
 #  longitude   :float
 #  address1    :string(255)
@@ -24,3 +17,10 @@ end
 #  country     :string(255)
 #
 
+require 'test_helper'
+
+class CommunityTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

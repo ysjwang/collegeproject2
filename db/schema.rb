@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20120728150938) do
   create_table "cbo_community_memberships", :force => true do |t|
     t.integer  "cbo_id"
     t.integer  "community_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "cbos", :force => true do |t|
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20120728150938) do
     t.string   "last_sign_in_ip"
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address1"
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(:version => 20120728150938) do
   create_table "communities", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address1"
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20120728150938) do
   create_table "student_community_memberships", :force => true do |t|
     t.integer  "student_id"
     t.integer  "community_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "students", :force => true do |t|
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(:version => 20120728150938) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "school"

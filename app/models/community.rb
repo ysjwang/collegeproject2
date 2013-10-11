@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: communities
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  latitude    :float
+#  longitude   :float
+#  address1    :string(255)
+#  address2    :string(255)
+#  city        :string(255)
+#  state       :string(255)
+#  zip         :string(255)
+#  country     :string(255)
+#
+
 class Community < ActiveRecord::Base
   
   attr_accessible :name, :description
@@ -44,22 +63,3 @@ class Community < ActiveRecord::Base
   
   
 end
-# == Schema Information
-#
-# Table name: communities
-#
-#  id          :integer         not null, primary key
-#  name        :string(255)
-#  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
-#  latitude    :float
-#  longitude   :float
-#  address1    :string(255)
-#  address2    :string(255)
-#  city        :string(255)
-#  state       :string(255)
-#  zip         :string(255)
-#  country     :string(255)
-#
-

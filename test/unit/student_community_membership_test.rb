@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: student_community_memberships
+#
+#  id           :integer          not null, primary key
+#  student_id   :integer
+#  community_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 require 'test_helper'
 
 class StudentCommunityMembershipTest < ActiveSupport::TestCase
@@ -5,14 +16,3 @@ class StudentCommunityMembershipTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
-# == Schema Information
-#
-# Table name: student_community_memberships
-#
-#  id           :integer         not null, primary key
-#  student_id   :integer
-#  community_id :integer
-#  created_at   :datetime
-#  updated_at   :datetime
-#
-

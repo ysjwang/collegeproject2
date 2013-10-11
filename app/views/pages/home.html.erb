@@ -1,103 +1,128 @@
 
 <br /><br /><br />
 
-<div id="map_wrapper">
-	<div id="map"></div>
-	
-	<div id="over_map">
-		<p>
-			<center>
-				<h3>Filter</h3>
-			
-				<%= form_tag pages_home_path, :method => :get do %>
-					<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :include_blank => "All Categories" %>
-					<br /><br />
-					<%= submit_tag "Apply Filter", :name => nil%>
-				<% end %>	
-			</center>
-		</p>
-	</div>
-</div>
-
 <script type="text/javascript">
 
 function closeInfos() {
 	if(infos.length > 0) {
 		
-		/* detach info-window from marker */
+		// detach info-window from marker
 		infos[0].set("marker", null);
 		
-		/* close it */
+		// close it
 		infos[0].close();
 		
-		/* blank out the array */
+		// blank out the array
 		infos.length = 0;
 		
 	}
 }
-function initializeMap() {
-        var myOptions = {
-          center: new google.maps.LatLng(42.3583, -71.0603),
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-		  panControl: false,
-		  streetViewControl: false,
-		  mapTypeControl: false,	  
-		  zoomControl: true,
-		  zoomControlOptions: {
-			position: google.maps.ControlPosition.LEFT_CENTER
-		  },
-		  scaleControl: false,
-        };
-        var map = new google.maps.Map(document.getElementById("map"),
-            myOptions);
 
 
-
-		infos = [];
-/** BEGIN STUFF FOR EACH CBO APPEARING **/
-
-
-/* do some foreach here */
-		<% @cbos.each do |cbo| %>
-		var title = '<%= escape_javascript(cbo.name) %>';
-		var html = '<strong><%= link_to escape_javascript(cbo.name), cbo %></strong><br /><%= escape_javascript(truncate(cbo.description, :length => 250, :separator => ' ')) %> <%= link_to escape_javascript("(more)"), cbo %>';
-		var myLatLng = new google.maps.LatLng(<%= cbo.latitude || 42.3583 %>, <%= cbo.longitude || -71.0603 %>);
-		
-		var marker = new google.maps.Marker({
-			title:title,
-			content:html,
-			map:map,
-			draggable:false,
-			position:myLatLng,
-		});
-		
-		google.maps.event.addListener(marker, 'click', function() {
-			/* close previous windows */
-			closeInfos();
-			
-			/* attach info */
-			var info = new google.maps.InfoWindow({content: this.content});
-			
-			/* open info */
-			info.open(map, this);
-			
-			/* keep the handle for closing it on next click event */
-			infos[0] = info;
-		});
-		
-		<% end %>
-	
-/* end foreach here */
-/** END STUFF FOR EACH CBO APPEARING **/
+/*
+var map;
+function initialize() {
+	var mapOptions = {
+		zoom: 8,
+		center: new google.maps.LatLng(-34.397, 150.644),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById('map-canvas'),
+		mapOptions);
 }
 
-</script>
+google.maps.event.addDomListener(window, 'load', initialize);
+END REAL */
 
-<% if !student_signed_in? %>
+    function initializeMap() {
+    	var myOptions = {
+    		center: new google.maps.LatLng(42.3583, -71.0603),
+    		zoom: 14,
+    		mapTypeId: google.maps.MapTypeId.ROADMAP,
+    		panControl: true,
+    		streetViewControl: false,
+    		mapTypeControl: false,	  
+    		zoomControl: true,
+    		zoomControlOptions: {
+    			position: google.maps.ControlPosition.LEFT_CENTER
+    		},
+    		scaleControl: false,
+    		/*zoom: 8,
+    		center: new google.maps.LatLng(-34.397, 150.644),
+    		mapTypeId: google.maps.MapTypeId.ROADMAP*/
+    	};
+    	var map = new google.maps.Map(document.getElementById("map"),
+    		myOptions);
 
-<div id="signup-bar">
-    <h2>Discover fulfilling volunteer opportunities - with your friends, in your community.</h2>
+
+
+    	infos = [];
+
+    	/** BEGIN STUFF FOR EACH CBO APPEARING **/
+
+
+    	// BEGIN CBO FOREACH
+    	<% @cbos.each do |cbo| %>
+    	var title = '<%= escape_javascript(cbo.name) %>';
+    	var html = '<strong><%= link_to escape_javascript(cbo.name), cbo %></strong><br /><%= escape_javascript(truncate(cbo.description, :length => 250, :separator => ' ')) %> <%= link_to escape_javascript("(more)"), cbo %>';
+    	var myLatLng = new google.maps.LatLng(<%= cbo.latitude || 42.3583 %>, <%= cbo.longitude || -71.0603 %>);
+
+    	var marker = new google.maps.Marker({
+    		title:title,
+    		content:html,
+    		map:map,
+    		draggable:false,
+    		position:myLatLng,
+    	});
+
+    	google.maps.event.addListener(marker, 'click', function() {
+    		// close previous windows
+    		closeInfos();
+
+    		// attach info 
+    		var info = new google.maps.InfoWindow({content: this.content});
+
+    		// open info 
+    		info.open(map, this);
+
+    		// keep the handle for closing it on next click event 
+    		infos[0] = info;
+    	});
+
+    	<% end %>
+
+    	// END CBO FOREACH
+    
+    	/** END STUFF FOR EACH CBO APPEARING **/
+    }
+
+    </script>
+
+
+    <div id="map_wrapper">
+    	<div id="map"></div>
+
+    	<div id="over_map">
+    		<p>
+    			<center>
+    				<h3>Filter</h3>
+
+    				<%= form_tag pages_home_path, :method => :get do %>
+    				<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :include_blank => "All Categories" %>
+    				<br /><br />
+    				<%= submit_tag "Apply Filter", :name => nil%>
+    				<% end %>	
+    			</center>
+    		</p>
+    	</div> 
+    </div>
+
+
+
+    <% if !student_signed_in? %>
+
+    <div id="signup-bar">
+    	<h2>Discover fulfilling volunteer opportunities - with your friends, in your community.</h2>
     <!--
     <form id="homepage-signup" action="/students/sign_up">
         <input type="text" name="student[first_name]" id="student_first_name" placeholder="Name" />

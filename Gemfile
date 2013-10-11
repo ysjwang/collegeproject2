@@ -26,6 +26,7 @@ gem 'acts-as-taggable-on'
 
 group :development do
 	gem 'annotate'
+	# gem "seed_dump", "~> 0.5.3"
 end
 
 # group :production do

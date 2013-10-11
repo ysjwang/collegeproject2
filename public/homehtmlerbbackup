@@ -1,0 +1,150 @@
+
+<br /><br /><br />
+
+<script type="text/javascript">
+
+function closeInfos() {
+	if(infos.length > 0) {
+		
+		/* detach info-window from marker */
+		infos[0].set("marker", null);
+		
+		/* close it */
+		infos[0].close();
+		
+		/* blank out the array */
+		infos.length = 0;
+		
+	}
+}
+function initializeMap() {
+	var myOptions = {
+		center: new google.maps.LatLng(42.3583, -71.0603),
+		zoom: 14,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		panControl: true,
+		streetViewControl: false,
+		mapTypeControl: false,	  
+		zoomControl: true,
+		zoomControlOptions: {
+			position: google.maps.ControlPosition.LEFT_CENTER
+		},
+		scaleControl: false,
+	};
+	var map = new google.maps.Map(document.getElementById("map"),
+		myOptions);
+
+
+
+	infos = [];
+	/** BEGIN STUFF FOR EACH CBO APPEARING **/
+
+
+	/* do some foreach here */
+	<% @cbos.each do |cbo| %>
+	var title = '<%= escape_javascript(cbo.name) %>';
+	var html = '<strong><%= link_to escape_javascript(cbo.name), cbo %></strong><br /><%= escape_javascript(truncate(cbo.description, :length => 250, :separator => ' ')) %> <%= link_to escape_javascript("(more)"), cbo %>';
+	var myLatLng = new google.maps.LatLng(<%= cbo.latitude || 42.3583 %>, <%= cbo.longitude || -71.0603 %>);
+	
+	var marker = new google.maps.Marker({
+		title:title,
+		content:html,
+		map:map,
+		draggable:false,
+		position:myLatLng,
+	});
+	
+	google.maps.event.addListener(marker, 'click', function() {
+		/* close previous windows */
+		closeInfos();
+		
+		/* attach info */
+		var info = new google.maps.InfoWindow({content: this.content});
+		
+		/* open info */
+		info.open(map, this);
+		
+		/* keep the handle for closing it on next click event */
+		infos[0] = info;
+	});
+	
+	<% end %>
+	
+	/* end foreach here */
+	/** END STUFF FOR EACH CBO APPEARING **/
+}
+
+</script>
+
+
+<div id="map_wrapper">
+	<div id="map"></div>
+	
+	<div id="over_map">
+		<p>
+			<center>
+				<h3>Filter</h3>
+				
+				<%= form_tag pages_home_path, :method => :get do %>
+				<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :include_blank => "All Categories" %>
+				<br /><br />
+				<%= submit_tag "Apply Filter", :name => nil%>
+				<% end %>	
+			</center>
+		</p>
+	</div> 
+</div>
+
+
+
+<% if !student_signed_in? %>
+
+<div id="signup-bar">
+	<h2>Discover fulfilling volunteer opportunities - with your friends, in your community.</h2>
+    <!--
+    <form id="homepage-signup" action="/students/sign_up">
+        <input type="text" name="student[first_name]" id="student_first_name" placeholder="Name" />
+        <input type="text" name="student[email]" id="student_email" placeholder="Email" />
+        <input type="submit" id="front_page_signup_submit" value="Get Started" />
+    </form>
+    !-->
+</div>
+<% end %>
+
+<!--
+<h1>The College Project - Home Page</h1>
+<p>This is the first page people see when they visit the home page.</p>
+
+<p>Let's find out where they are! Do some reverse geocoding</p>
+
+<p>Welcome! You are coming from <%= @user_location %></p>
+
+<p>Nearby Communities:</p>
+<% @nearby_communities.each do |community| %>
+<%= community.name %> <br />
+<% end %>
+
+<br />
+
+<p>Nearby CBOs:</p>
+<% @nearby_cbos.each do |cbo| %>
+<%= cbo.name %> <br />
+<% end %>
+
+<br />
+
+<p>Nearby Students:</p>
+<% @nearby_students.each do |student| %>
+<%= student.full_name %> <br />
+<% end %>
+
+<br />
+
+
+
+<p>We probably want to put the map in this section</p>
+
+
+
+<p>Show the sign-up box with login option if they aren't logged in; also give choice for CBO or Student login.</p>
+-->
