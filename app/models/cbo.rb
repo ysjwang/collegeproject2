@@ -149,27 +149,27 @@ class Cbo < ActiveRecord::Base
   
   def full_address
     running_address = ""
-    if !self.address1.empty?
+    if !self.address1.blank?
       running_address += self.address1 + ', '
     end
 
-    if !self.address2.empty?
+    if !self.address2.blank?
       running_address += self.address2 + ', '
     end
 
-    if !self.city.empty?
+    if !self.city.blank?
       running_address += self.city + ', '
     end
 
-    if !self.state.empty?
+    if !self.state.blank?
       running_address += self.state + ', '
     end
 
-    if !self.zip.empty?
+    if !self.zip.blank?
       running_address += self.zip + ', '
     end
 
-    if !self.country.empty?
+    if !self.country.blank?
       running_address += self.country
     end
 
