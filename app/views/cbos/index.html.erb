@@ -2,22 +2,31 @@
 	<div id="content">
     	<h2>All Organizations</h2>
         
-		<%= form_tag cbos_path, :method => :get do %>
-			<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :include_blank => "All Categories" %>
-			<%= submit_tag "Filter", :name => nil%>
-		<% end %>
-		
+        <div style="clear: both;">
+        </div>
+        <div style="padding-left: 50px">
+    		<%= form_tag cbos_path, :method => :get do %>
+    			<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :prompt => "All Categories" %>
+    			<%= submit_tag "Filter", :name => nil, :class => "btn" %>
+    		<% end %>
+        </div>
+		<br />
         <div class="push"></div>
         
 		<% @cbos.each do |cbo| %>
         <div class="box">
-            <a href="<%= cbo_path(cbo) %>">
-            	<img src="http://www.bnntv.org/sites/default/files/what-is-bnn.jpg">
-            	<div class="box-footer">
-                	<h3><%= cbo.name %></h3>
-                    <h4>Learn More</h4>
-                </div>
-            </a>
+
+            <%= link_to image_tag(cbo.image1(:splash)), cbo %>
+        	<div class="box-footer">
+            	<h3><%= cbo.name %> <%= !cbo.city.blank? ? "(#{cbo.city})" : '' %></h3>
+                <h4>
+                    <%= cbo.category_list.map{|category| category}.join(", ") %>
+                </h4>
+                <p><%= escape_javascript(truncate(cbo.description, :length => 150, :separator => ' ')) %></p>
+                <br />
+                <p><%= link_to 'Learn More', cbo %></p>
+            </div>
+
         </div>
 		<% end %>
 

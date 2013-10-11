@@ -270,7 +270,7 @@ select {
    
 	.box {
 		width: 293px;
-		height: 260px;
+		height: 350px;
 		background-color: #eee;
 		float: left; margin: 0 0 20px 20px;
 		position: relative;
@@ -282,7 +282,7 @@ select {
 		position: absolute;
 		bottom: 0;
 		border-top: 3px solid #b62521;
-		height: 87px;
+		height: 177px;
 		width: 100%;
 		background-color: #fff7f7;
 	}
@@ -295,6 +295,14 @@ select {
 	}
 	
 	.box-footer h4 {
+		font-size: .8em;
+		font-weight: lighter;
+		color: #5d5557;
+		padding: 0 20px;
+		margin-top: -13px;
+	}
+	
+	.box-footer p {
 		font-size: .7em;
 		font-weight: lighter;
 		color: #5d5557;

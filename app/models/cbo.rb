@@ -72,7 +72,7 @@ class Cbo < ActiveRecord::Base
   # begin attachments
   
   has_attached_file :image1, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>" },
+    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
     :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
@@ -83,7 +83,7 @@ class Cbo < ActiveRecord::Base
   validates_attachment_content_type :image1, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   has_attached_file :image2, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>" },
+    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
     :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
@@ -94,7 +94,7 @@ class Cbo < ActiveRecord::Base
   validates_attachment_content_type :image2, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   has_attached_file :image3, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>" },
+    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
     :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
@@ -105,7 +105,7 @@ class Cbo < ActiveRecord::Base
   validates_attachment_content_type :image3, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   has_attached_file :image4, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>" },
+    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
     :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
@@ -117,7 +117,7 @@ class Cbo < ActiveRecord::Base
   
   
   has_attached_file :image5, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>" },
+    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
     :default_url => "missing_:style.gif",
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",

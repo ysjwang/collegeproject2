@@ -50,7 +50,7 @@ var title = '<%= escape_javascript(cbo.name) %>'; // CBO name going into the pop
 var html = '<div class="gmaps-info-bubble">\
 			<%= link_to escape_javascript(cbo.name), cbo %></h2><br /> \
 			<%= image_tag cbo.image1(:thumb) %><br /> \
-			<%= escape_javascript(truncate(cbo.description, :length => 250, :separator => ' ')) %> <%= link_to escape_javascript("(more)"), cbo %>. \
+			<%= escape_javascript(truncate(cbo.description, :length => 150, :separator => ' ')) %> <%= link_to escape_javascript("(more)"), cbo %>. \
 			</div>'; // CBO description going into the opoup
 var myLatLng = new google.maps.LatLng(<%= cbo.latitude || 42.3583 %>, <%= cbo.longitude || -71.0603 %>);
 
