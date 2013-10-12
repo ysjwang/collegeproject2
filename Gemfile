@@ -23,6 +23,8 @@ gem 'possessive'
 
 gem 'acts-as-taggable-on'
 
+gem 'activeadmin'
+
 
 group :development do
 	gem 'annotate'
@@ -41,7 +43,11 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+
+# Need to use a lower version, as the newest version removes jquery-ui from this gem, which active-admin depends on. 
+# See http://stackoverflow.com/questions/16844411/rails-active-admin-deployment-couldnt-find-file-jquery-ui for more details
+gem "jquery-rails", "< 3.0.0" 
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

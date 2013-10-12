@@ -1,4 +1,7 @@
 Collegeproject2::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   get "communities/new"
 
   get "communities/edit"
@@ -18,8 +21,10 @@ Collegeproject2::Application.routes.draw do
   get "students/show"
 
   devise_for :cbos
+  ActiveAdmin.routes(self)
 
   devise_for :students
+  ActiveAdmin.routes(self)
 
   get "pages/home"
 

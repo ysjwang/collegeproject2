@@ -1,51 +1,44 @@
 <div class="container">
 	<div id="content">
-    	<h2 style="clear:right; float:right"><%= @cbo.name %></h2>
-        
-        <div class="column-left">
-	<!--
-        	<img src="http://placehold.it/150x150">
-            !-->
+		<h2 style="clear:right; float:right"><%= @cbo.name %></h2>
 
-<br /><br />
-            <ul class="profile-facts">
-            	<li class="my-name"><%= @cbo.name %></li>
-              <!--  <li class="my-tag">Bad Astronaut</li> !-->
-                
-                <br />
-                <strong>Address</strong>
+		<div class="column-left">
+
+
+			<br /><br />
+			<ul class="profile-facts">
+				<li class="my-name">
+					<%= @cbo.name %>
+
+					<% if current_cbo == @cbo %>
+					<%= link_to "[Edit]", edit_cbo_path(@cbo) %>
+					<% end %>
+
+				</li>
+				<li class="my-tag"><%= @cbo.category_list.map{|category| category}.join(", ") %></li>
+
+				<br />
+				<strong>Address</strong>
 				<li><%= @cbo.address1 %></li>
 				<li><%= @cbo.address2 %></li>
 				<li><%= @cbo.city %>, <%= @cbo.state %></li>
 				<li><%= @cbo.zip %></li>
-<!--
-                <li>School</li>
-                <li>Email</li>
-				<li>About Me</li>
-                
-                <hr />
-                <strong>My Communities</strong>
-                <li>Boston, New York City</li>
-                
-         !-->      
 
-                
-            </ul>
 
-				<% if current_cbo == @cbo %>
-				<%= link_to "[Edit]", edit_cbo_path(@cbo) %>
-				<% end %>
-        </div>
+			</ul>
+
+			
+		</div>
 
 		<div class="column-right">
-			
-			
+
+
 			<center><%= image_tag @cbo.image1(:medium) %></center>
-			
-			
-			
-			             
-			
+
+
+
+
+
 			<br />
 			<%= simple_format(@cbo.description) %>
 			<!--
@@ -54,14 +47,14 @@
 			</p>
 			!-->
 		</div>
-        
 
-        
 
-        <div class="push"></div>
 
-	
-        
-    </div>
+
+		<div class="push"></div>
+
+
+
+	</div>
 </div>
 
