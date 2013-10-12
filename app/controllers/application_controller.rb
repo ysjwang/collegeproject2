@@ -14,10 +14,11 @@ class ApplicationController < ActionController::Base
 
 		# Force override for dev environment
 		if Rails.env.development?
-			location = "Norwich, CT, USA"
+			location = "Boston, MA, USA"
+			# location = "Norwich, CT, USA"
 		end
 
-		user_coordinates = Geocoder.coordinates(location) # || [24.3584308, -71.0597732]
+		user_coordinates = Geocoder.coordinates(location) # || [42.3584308, -71.0597732]
 		return user_coordinates
 	end
 

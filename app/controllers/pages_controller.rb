@@ -13,7 +13,7 @@ class PagesController < ApplicationController
       
       # Nearby CBOs - 30 mile radius
       @nearby_cbos = Cbo.near(@user_coordinates, 30)
-      puts "There are #{@nearby_cbos.count} nearby CBOs"
+      puts "There are #{@nearby_cbos.count} nearby CBOs in total"
 
 
       @cbos = @nearby_cbos # Cbo.all
@@ -23,9 +23,13 @@ class PagesController < ApplicationController
 
       category_string = params[:category]
       @nearby_cbos = Cbo.near(@user_coordinates, 30) #Cbo.near(user_coordinates, 30) 
-      puts "There are #{@nearby_cbos.count} nearby CBOs"
 
-      @cbos = Cbo.tagged_with(category_string)     
+      @tagged_cbos = Cbo.tagged_with(category_string)     
+
+      @cbos = @nearby_cbos.merge(@tagged_cbos)
+
+      puts "There are #{@nearby_cbos.count} nearby CBOs in total, #{@tagged_cbos.count} that match the filter, resulting in #{@cbos.count} final."
+
       
       # Nearby CBOs - 30 mile radius
     end
