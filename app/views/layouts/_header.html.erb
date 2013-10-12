@@ -48,6 +48,23 @@
                 </li>
 
 				<% end %>
+
+                <% if cbo_signed_in? %>
+                
+                <!-- This should appear only when logged in -->
+                <li class="nav-sub nav-sub-event"><%= link_to "My Organization", "#" %>
+                    <div class="nav-sub-container">
+                        <ul>
+                            <li><%= link_to "My Organization", current_cbo %></li>
+                            <!-- Delete above line and remove comment to actually link to profile
+                                <li><%= link_to "My Profile", current_student %></li>
+                            -->
+                            <li><%= link_to "Settings", '#' %></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <% end %>
                 
 
 				<% if student_signed_in? %>
@@ -55,7 +72,14 @@
 				<% elsif cbo_signed_in? %>
 					<li><%= link_to "Logout", destroy_cbo_session_path, :method => :delete %></li>
 				<% else %>
-                	<li><%= link_to "Login", new_student_session_path %></li>
+                    <li class="nav-sub nav-sub-event"><%= link_to "Login", "#" %>
+                        <div class="nav-sub-container">
+                            <ul>
+                                <li><%= link_to "Student", new_student_session_path %></li>
+                                <li><%= link_to "CBO", new_cbo_session_path %></li>
+                            </ul>
+                        </div>
+                    </li>
 					<li><%= link_to "Sign up", new_student_registration_path %></li>
 				<% end %>
 

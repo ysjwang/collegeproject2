@@ -2,49 +2,53 @@
 #
 # Table name: cbos
 #
-#  id                     :integer          not null, primary key
-#  email                  :string(255)      default(""), not null
-#  encrypted_password     :string(255)      default(""), not null
-#  reset_password_token   :string(255)
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer          default(0)
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string(255)
-#  last_sign_in_ip        :string(255)
-#  name                   :string(255)
-#  description            :text
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  latitude               :float
-#  longitude              :float
-#  address1               :string(255)
-#  address2               :string(255)
-#  city                   :string(255)
-#  state                  :string(255)
-#  zip                    :string(255)
-#  country                :string(255)
-#  image1_file_name       :string(255)
-#  image1_content_type    :string(255)
-#  image1_file_size       :integer
-#  image1_updated_at      :datetime
-#  image2_file_name       :string(255)
-#  image2_content_type    :string(255)
-#  image2_file_size       :integer
-#  image2_updated_at      :datetime
-#  image3_file_name       :string(255)
-#  image3_content_type    :string(255)
-#  image3_file_size       :integer
-#  image3_updated_at      :datetime
-#  image4_file_name       :string(255)
-#  image4_content_type    :string(255)
-#  image4_file_size       :integer
-#  image4_updated_at      :datetime
-#  image5_file_name       :string(255)
-#  image5_content_type    :string(255)
-#  image5_file_size       :integer
-#  image5_updated_at      :datetime
+#  id                      :integer          not null, primary key
+#  email                   :string(255)      default(""), not null
+#  encrypted_password      :string(255)      default(""), not null
+#  reset_password_token    :string(255)
+#  reset_password_sent_at  :datetime
+#  remember_created_at     :datetime
+#  sign_in_count           :integer          default(0)
+#  current_sign_in_at      :datetime
+#  last_sign_in_at         :datetime
+#  current_sign_in_ip      :string(255)
+#  last_sign_in_ip         :string(255)
+#  name                    :string(255)
+#  description             :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  latitude                :float
+#  longitude               :float
+#  address1                :string(255)
+#  address2                :string(255)
+#  city                    :string(255)
+#  state                   :string(255)
+#  zip                     :string(255)
+#  country                 :string(255)
+#  image1_file_name        :string(255)
+#  image1_content_type     :string(255)
+#  image1_file_size        :integer
+#  image1_updated_at       :datetime
+#  image2_file_name        :string(255)
+#  image2_content_type     :string(255)
+#  image2_file_size        :integer
+#  image2_updated_at       :datetime
+#  image3_file_name        :string(255)
+#  image3_content_type     :string(255)
+#  image3_file_size        :integer
+#  image3_updated_at       :datetime
+#  image4_file_name        :string(255)
+#  image4_content_type     :string(255)
+#  image4_file_size        :integer
+#  image4_updated_at       :datetime
+#  image5_file_name        :string(255)
+#  image5_content_type     :string(255)
+#  image5_file_size        :integer
+#  image5_updated_at       :datetime
+#  logo_image_file_name    :string(255)
+#  logo_image_content_type :string(255)
+#  logo_image_file_size    :integer
+#  logo_image_updated_at   :datetime
 #
 
 class Cbo < ActiveRecord::Base
@@ -57,7 +61,7 @@ class Cbo < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :description
   attr_accessible :address1, :address2, :city, :state, :zip, :country
-  attr_accessible :image1, :image2, :image3, :image4, :image5
+  attr_accessible :image1, :image2, :image3, :image4, :image5, :logo_image
   
   has_many :cbo_community_memberships
   has_many :communities, :through => :cbo_community_memberships, :source => :community
@@ -71,6 +75,17 @@ class Cbo < ActiveRecord::Base
   
   # begin attachments
   
+
+  has_attached_file :logo_image, 
+    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+    :default_url => "missing_:style.gif",
+    :storage => :s3,
+    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :path => "/:style/:id/:filename",
+    :s3_storage_class => :reduced_redundancy
+  validates_attachment_size :logo_image, :less_than => 20.megabytes
+  validates_attachment_content_type :logo_image, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
+
   has_attached_file :image1, 
     :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
     :default_url => "missing_:style.gif",

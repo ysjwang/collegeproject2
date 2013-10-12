@@ -7,6 +7,8 @@
  	height:270px;
  	display:block;
  }
+
+ 
  
  /* for map */
  #map_wrapper { 
@@ -98,6 +100,7 @@ select {
 		width: 100%;
 
 		margin: 40px 0;
+		padding: 10px;
 		background-color: #fff;
 		border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
 	}

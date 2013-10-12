@@ -16,7 +16,7 @@
 		<% @cbos.each do |cbo| %>
         <div class="box">
 
-            <%= link_to image_tag(cbo.image1(:splash)), cbo %>
+            <%= link_to image_tag(cbo.logo_image(:splash)), cbo %>
         	<div class="box-footer">
             	<h3><%= cbo.name %> <%= !cbo.city.blank? ? "(#{cbo.city})" : '' %></h3>
                 <h4>
