@@ -13,6 +13,14 @@ class CbosController < ApplicationController
     
   end
 
+  def nearby
+    @user_location = get_user_location
+    @user_coordinates = get_user_coordinates
+    nearby_cbos = Cbo.near(@user_coordinates, 30)
+    @cbos = nearby_cbos
+    puts "#{@cbos.count} within 30 miles of #{@user_location}"
+  end
+
   def show
     @cbo = Cbo.find(params[:id])
 

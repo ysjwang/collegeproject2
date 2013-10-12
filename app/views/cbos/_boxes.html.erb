@@ -1,0 +1,16 @@
+<% cbos.each do |cbo| %>
+<div class="box">
+
+    <%= link_to image_tag(cbo.logo_image(:splash)), cbo %>
+    <div class="box-footer">
+       <h3><%= cbo.name %> <%= !cbo.city.blank? ? "(#{cbo.city})" : '' %></h3>
+       <h4>
+        <%= cbo.category_list.map{|category| category}.join(", ") %>
+    </h4>
+    <p><%= escape_javascript(truncate(cbo.description, :length => 150, :separator => ' ')) %></p>
+    <br />
+    <p><%= link_to 'Learn More', cbo %></p>
+</div>
+
+</div>
+<% end %>

@@ -40,7 +40,11 @@ Collegeproject2::Application.routes.draw do
 
   resources :pages
   resources :students
-  resources :cbos
+  resources :cbos do
+    collection do
+      get 'nearby'
+    end
+  end
   resources :communities
 
   # Sample of regular route:
