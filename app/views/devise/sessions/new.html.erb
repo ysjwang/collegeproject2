@@ -1,17 +1,34 @@
-<h2>Sign in</h2>
+<div class="container">
+	<div id="content">
+		<h2>Sign in</h2>
+		<div class="clearfix"></div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		<div>
+			<strong><%= f.label :email %></strong><br />
+			<%= f.email_field :email, :autofocus => true %>
+		</div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+		<br />
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+		<div>
+			<strong><%= f.label :password %></strong><br />
+			<%= f.password_field :password %>
+		</div>
 
-<%= render "links" %>
+		<br />
+		<% if devise_mapping.rememberable? -%>
+		<div>
+			<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+		</div>
+		<% end -%>
+
+		<div><%= f.submit "Sign in", class: "btn" %></div>
+		<% end %>
+
+		<br />
+		<%= render "devise/shared/links" %>
+	</div>
+
+</div>

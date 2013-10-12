@@ -63,6 +63,7 @@ class Cbo < ActiveRecord::Base
   attr_accessible :name, :description, :team_info
   attr_accessible :address1, :address2, :city, :state, :zip, :country
   attr_accessible :image1, :image2, :image3, :image4, :image5, :logo_image
+  attr_accessible :category_list
   
   has_many :cbo_community_memberships
   has_many :communities, :through => :cbo_community_memberships, :source => :community

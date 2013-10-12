@@ -2,8 +2,8 @@
 	<div id="content">
     	<h2>All Organizations</h2>
         
-        <div style="clear: both;">
-        </div>
+        <div class="clearfix"></div>
+        
         <div style="padding-left: 50px">
     		<%= form_tag cbos_path, :method => :get do %>
     			<%= select_tag "category", options_from_collection_for_select(@categories, "name", "name", params[:category]), :prompt => "All Categories" %>

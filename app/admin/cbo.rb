@@ -14,6 +14,7 @@ ActiveAdmin.register Cbo do
 			f.input :state
 			f.input :zip
 			f.input :country
+			f.input :category_list, as: :select, input_html: { multiple: true }, collection: options_for_select(Cbo.category_counts, f.object.category_list)
 			f.input :logo_image, :as => :file, :hint => f.template.image_tag(f.object.logo_image.url(:thumb))
 			f.input :image1, :as => :file, :hint => f.template.image_tag(f.object.image1.url(:thumb))
 			f.input :image2, :as => :file, :hint => f.template.image_tag(f.object.image2.url(:thumb))

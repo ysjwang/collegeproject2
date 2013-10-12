@@ -37,17 +37,17 @@ class PagesController < ApplicationController
     
     
     
-    # Nearby Communities - 30 mile radius
-    #puts "user coordinates is #{user_coordinates} for #{@user_location}"
-    @nearby_communities = Community.near(@user_coordinates, 30)
-    puts "Nearby communites are #{@nearby_communities}"
+    # # Nearby Communities - 30 mile radius
+    # #puts "user coordinates is #{user_coordinates} for #{@user_location}"
+    # @nearby_communities = Community.near(@user_coordinates, 30)
+    # puts "Nearby communites are #{@nearby_communities}"
     
     
     
-    # Nearby Students - 30 mile radius
-    @nearby_students = Student.near(@user_coordinates, 30)
+    # # Nearby Students - 30 mile radius
+    # @nearby_students = Student.near(@user_coordinates, 30)
     
-    #@cbos = Cbo.all
+    # #@cbos = Cbo.all
     
   end
   
