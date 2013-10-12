@@ -46,13 +46,17 @@ class PagesController < ApplicationController
 
   # Returns an object with [:lat] and [:lng]
   def get_user_location
-    if (!request.location.city.blank? && !request.location.state.blank? && !request.location.country.blank?)
-      puts "Case 1"
-      user_location = request.location.city + ', ' + request.location.state + ', ' + request.location.country
-    else
-      puts "Case 2"
-      user_location = 'Boston, MA, USA'
-    end
+    # if (!request.location.city.blank? && !request.location.state.blank? && !request.location.country.blank?)
+    #   puts "Case 1"
+    #   user_location = request.location.city + ', ' + request.location.state + ', ' + request.location.country
+    # else
+    #   puts "Case 2"
+    #   user_location = 'Boston, MA, USA'
+    # end
+
+    ip_location = lookup_ip_location
+    user_location = ip_location.city + ', ' + ip_location.state + ', ' + ip_location.country
+    puts "New using lookup_ip_location is #{user_location}"
     
     # user_location = "Boston, MA, USA" # Force this, for testing purposes
 

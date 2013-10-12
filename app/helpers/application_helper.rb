@@ -5,4 +5,7 @@ module ApplicationHelper
 		image_tag("header_logo.png", :alt =>"The College Project", :class=>"header-logo")
 	end
 
+
+	
+
 end
