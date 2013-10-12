@@ -146,6 +146,12 @@ class Cbo < ActiveRecord::Base
   
   # end attachments
   
+
+
+  # def self.nearby_cbos(user_coordinates, radius = '30')
+  #   # user_coordinates is in the form of Geocoder.coordinates("123 Address String, City, State, Country")
+  #   return Cbo.near(user_coordinates, radius)
+  # end
   
   
   def part_of_community?(community)
@@ -178,6 +184,7 @@ class Cbo < ActiveRecord::Base
 
     return related_cbos
   end
+
 
 
   def full_address

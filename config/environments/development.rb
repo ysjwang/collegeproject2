@@ -32,11 +32,3 @@ Collegeproject2::Application.configure do
 
   Paperclip.options[:command_path] = 'C:\Program Files\ImageMagick-6.8.7-Q16'
 end
-
-class ActionDispatch::Request
-  def remote_ip
-    "72.68.99.227" # ipd home (Denver,CO or Renton,WA)                                                                                                                                                                                                                                                                        
-    # "208.87.35.103" # websiteuk.com -- Nassau, Bahamas                                                                                                                                                                                                                                                                      
-    # "50.78.167.161" # HOL Seattle, WA                                                                                                                                                                                                                                                                                       
-  end
-end

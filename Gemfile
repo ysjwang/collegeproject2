@@ -28,6 +28,7 @@ gem 'activeadmin'
 
 group :development do
 	gem 'annotate'
+	gem 'quiet_assets'
 	# gem "seed_dump", "~> 0.5.3"
 end
 
