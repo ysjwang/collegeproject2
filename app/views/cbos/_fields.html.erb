@@ -1,33 +1,37 @@
 <%= semantic_form_for @cbo do |cbo_form| %>
 <%= cbo_form.inputs do %>
+<h3>Basic Information</h3>
+<p>Fill out some basic information about your organization here.</p><br />
 <%= cbo_form.input :name %>
 <%= cbo_form.input :description %>
-
-
-<%= cbo_form.input :image1 %>
-<p>Current image: <%= @cbo.image1 %></p>
-<br /><br />
-
-
-
-REAL: 
+<%= cbo_form.input :team_info %>
 
 <%= cbo_form.input :category_list, 
 as: :select, 
-input_html: { multiple: true },
-collection: options_for_select(Cbo.category_counts, @cbo.category_list)
+input_html: { multiple: true, style: "height: 200px; width: 200px;" },
+collection: options_for_select(Cbo.category_counts, @cbo.category_list),
+hint: "Hold Ctrl (Windows) or Cmd (Mac) to select multiple categories."
 %> 
 
-
-END REAL
-
-
+<h4>Address</h4>
 <%= cbo_form.input :address1 %>
 <%= cbo_form.input :address2 %>
 <%= cbo_form.input :city %>
 <%= cbo_form.input :state %>
 <%= cbo_form.input :zip %>
 <%= cbo_form.input :country %>
+
+<hr />
+<h3>Photos and Images</h3>
+<%= cbo_form.input :logo_image, :hint => cbo_form.template.image_tag(@cbo.logo_image(:thumb)) %>
+<%= cbo_form.input :image1, :hint => cbo_form.template.image_tag(@cbo.image1(:thumb)) %>
+<%= cbo_form.input :image2, :hint => cbo_form.template.image_tag(@cbo.image2(:thumb)) %>
+<%= cbo_form.input :image3, :hint => cbo_form.template.image_tag(@cbo.image3(:thumb)) %>
+<%= cbo_form.input :image4, :hint => cbo_form.template.image_tag(@cbo.image4(:thumb)) %>
+<%= cbo_form.input :image5, :hint => cbo_form.template.image_tag(@cbo.image5(:thumb)) %>
+
+
+<hr />
 <% end %>
-<%= cbo_form.actions %>
+<%= cbo_form.actions  %>
 <% end %>
