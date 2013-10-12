@@ -25,6 +25,8 @@ gem 'acts-as-taggable-on'
 
 gem 'activeadmin'
 
+gem 'thin'
+
 
 group :development do
 	gem 'annotate'
