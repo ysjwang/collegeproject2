@@ -49,6 +49,7 @@
 #  logo_image_content_type :string(255)
 #  logo_image_file_size    :integer
 #  logo_image_updated_at   :datetime
+#  team_info               :text
 #
 
 require 'test_helper'

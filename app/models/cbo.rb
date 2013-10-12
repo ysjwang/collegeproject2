@@ -49,17 +49,18 @@
 #  logo_image_content_type :string(255)
 #  logo_image_file_size    :integer
 #  logo_image_updated_at   :datetime
+#  team_info               :text
 #
 
 class Cbo < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :team_info
   attr_accessible :address1, :address2, :city, :state, :zip, :country
   attr_accessible :image1, :image2, :image3, :image4, :image5, :logo_image
   
@@ -78,68 +79,68 @@ class Cbo < ActiveRecord::Base
   
 
   has_attached_file :logo_image, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
-    :default_url => "missing_:style.gif",
-    :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "/:style/:id/:filename",
-    :s3_storage_class => :reduced_redundancy
+  :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
   validates_attachment_size :logo_image, :less_than => 20.megabytes
   validates_attachment_content_type :logo_image, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
 
   has_attached_file :image1, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
-    :default_url => "missing_:style.gif",
-    :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "/:style/:id/:filename",
-    :s3_storage_class => :reduced_redundancy
-    
+  :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
+
   validates_attachment_size :image1, :less_than => 20.megabytes
   validates_attachment_content_type :image1, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   has_attached_file :image2, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
-    :default_url => "missing_:style.gif",
-    :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "/:style/:id/:filename",
-    :s3_storage_class => :reduced_redundancy
-    
+  :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
+
   validates_attachment_size :image2, :less_than => 20.megabytes
   validates_attachment_content_type :image2, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   has_attached_file :image3, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
-    :default_url => "missing_:style.gif",
-    :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "/:style/:id/:filename",
-    :s3_storage_class => :reduced_redundancy
-    
+  :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
+
   validates_attachment_size :image3, :less_than => 20.megabytes
   validates_attachment_content_type :image3, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   has_attached_file :image4, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
-    :default_url => "missing_:style.gif",
-    :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "/:style/:id/:filename",
-    :s3_storage_class => :reduced_redundancy
-    
+  :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
+
   validates_attachment_size :image4, :less_than => 20.megabytes
   validates_attachment_content_type :image4, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
   
   has_attached_file :image5, 
-    :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
-    :default_url => "missing_:style.gif",
-    :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "/:style/:id/:filename",
-    :s3_storage_class => :reduced_redundancy
-    
+  :styles => { :medium => "570x270>", :thumb => "210x100>", :splash => "293x170" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
+
   validates_attachment_size :image5, :less_than => 20.megabytes
   validates_attachment_content_type :image5, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
   
@@ -163,6 +164,22 @@ class Cbo < ActiveRecord::Base
     end
   end
   
+  def related_cbos
+    related_cbos = Array.new
+    categories = self.category_list
+    categories.each do |category|
+      cbos = Cbo.tagged_with(category).to_a
+      related_cbos = (related_cbos + cbos).uniq
+
+    end
+
+    # filter to remove self from "related CBOs"
+    related_cbos = related_cbos.reject { |cbo| cbo == self }
+
+    return related_cbos
+  end
+
+
   def full_address
     running_address = ""
     if !self.address1.blank?

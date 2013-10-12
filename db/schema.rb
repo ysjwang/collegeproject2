@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131012023034) do
+ActiveRecord::Schema.define(:version => 20131012024209) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20131012023034) do
     t.string   "logo_image_content_type"
     t.integer  "logo_image_file_size"
     t.datetime "logo_image_updated_at"
+    t.text     "team_info"
   end
 
   add_index "cbos", ["email"], :name => "index_cbos_on_email", :unique => true

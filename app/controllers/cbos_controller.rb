@@ -17,15 +17,7 @@ class CbosController < ApplicationController
     @cbo = Cbo.find(params[:id])
 
     # Find other CBOs tagged with this category
-    @related_cbos = Array.new
-    categories = @cbo.category_list
-    categories.each do |category|
-      cbos = Cbo.tagged_with(category).to_a
-      @related_cbos = (@related_cbos + cbos).uniq
-
-    end
-
-    puts @related_cbos
+    @related_cbos = @cbo.related_cbos
 
 
   end

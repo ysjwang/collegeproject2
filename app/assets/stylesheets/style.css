@@ -234,12 +234,12 @@ select {
    .column-left {
 	   float: left;
 	   clear: left;
-	   width: 200px;
+	   width: 210px;
    }
    
    .column-left img {
-	   padding: 0 20px;
-	   border-radius: 50%;
+	   /* padding: 0 20px; */
+	   /* border-radius: 50%;*/
    }
    
    .column-left ul.profile-facts {
@@ -264,7 +264,7 @@ select {
    .column-right {
 	   float: right;
 		clear:right;
-		width:700px;
+		width:690px;
    }
    
 /* --------------------------
