@@ -66,6 +66,7 @@ class Cbo < ActiveRecord::Base
   has_many :cbo_community_memberships
   has_many :communities, :through => :cbo_community_memberships, :source => :community
   
+  has_many :testimonies
   
   acts_as_taggable
   acts_as_taggable_on :categories

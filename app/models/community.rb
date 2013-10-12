@@ -26,7 +26,7 @@ class Community < ActiveRecord::Base
   has_many :students, :through => :student_community_memberships, :source => :student
   
   has_many :cbo_community_memberships
-  has_many :cbos, :through => :cbo_communit_memberships, :source => :cbo
+  has_many :cbos, :through => :cbo_community_memberships, :source => :cbo
   
   geocoded_by :full_address
   after_validation :geocode, :if => (:address1_changed? || :address2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)

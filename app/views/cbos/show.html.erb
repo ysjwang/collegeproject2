@@ -49,25 +49,39 @@
 
 			<br />
 
-			<h3>Summary</h3>
-			<%= simple_format(@cbo.description) %>
+			<div class="cbo-summary">
+
+				<h3>Summary</h3>
+				<%= simple_format(@cbo.description) %>
+			</div>
 			<hr /><br />
 
-			<h3>Testimonials</h3>
-			<%= simple_format(@cbo.description) %>
-			<hr /><br />
+			<div class="cbo-testimonies">
 
-			<h3>Team</h3>
-			<%= simple_format(@cbo.description) %>
-			<hr /><br />
+				<h3>Testimonies</h3>
+				<% @cbo.testimonies.each do |testimony| %>
 
-			<h3>You May Also Be Interested In...</h3>
-			<ul>
-				<% @related_cbos.each do |cbo| %>
-				<% puts "cbo is a #{cbo.class}" %>
-				<li><%= link_to cbo.name, cbo %></li>
+				<em>"<%= testimony.title %>" - <%= testimony.author %></em>
+				<%= simple_format(testimony.content) %>
+				<br />
 				<% end %>
-			</ul>
+			</div>
+			<hr /><br />
+
+			<div class="cbo-team">
+				<h3>Team</h3>
+				<%= simple_format(@cbo.description) %>
+			</div>
+			<hr /><br />
+
+			<div class="cbo-interested">
+				<h3>You May Also Be Interested In...</h3>
+				<ul>
+					<% @related_cbos.each do |cbo| %>
+					<li><%= link_to cbo.name, cbo %> (<%= cbo.city %>)</li>
+					<% end %>
+				</ul>
+			</div>
 			
 
 
