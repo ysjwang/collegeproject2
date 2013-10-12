@@ -9,7 +9,7 @@
                 	<div class="nav-sub-container">
                     	<ul>
                         	<% if student_signed_in? %><li><%= link_to "My Organizations", cbos_path %></li><% end %>
-                            <li><%= link_to "Nearby Organizations", cbos_path %></li>
+                            <li><%= link_to "Nearby Organizations", nearby_cbos_path %></li>
                             <li><%= link_to "All Organizations", cbos_path %></li>
                             <% if !student_signed_in? && !cbo_signed_in? %><li><%= link_to "Add Yours!", new_cbo_registration_path %></li><% end %>
                         </ul>
