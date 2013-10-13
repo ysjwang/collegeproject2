@@ -27,6 +27,11 @@
 #  state                  :string(255)
 #  zip                    :string(255)
 #  country                :string(255)
+#  tagline                :text
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

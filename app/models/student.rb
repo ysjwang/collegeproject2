@@ -27,6 +27,11 @@
 #  state                  :string(255)
 #  zip                    :string(255)
 #  country                :string(255)
+#  tagline                :text
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class Student < ActiveRecord::Base
@@ -39,13 +44,28 @@ class Student < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   attr_accessible :first_name, :last_name, :school, :about_me
-  attr_accessible :address1, :address2, :city, :state, :zip, :country
+  attr_accessible :address1, :address2, :city, :state, :zip, :country, :tagline
+
+  attr_accessible :avatar
   
   has_many :student_community_memberships
   has_many :communities, :through => :student_community_memberships, :source => :community
   
   geocoded_by :full_address
   after_validation :geocode, :if => (:address1_changed? || :address2_changed? || :city_changed? || :state_changed? || :zip_changed? || :country_changed?)
+
+
+
+
+  has_attached_file :avatar, 
+  :styles => { :square => "150x150#", :square_thumb => "75x75#" },
+  :default_url => "missing_:style.gif",
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename",
+  :s3_storage_class => :reduced_redundancy
+  validates_attachment_size :avatar, :less_than => 20.megabytes
+  validates_attachment_content_type :avatar, :content_type => [ /^image\/(?:jpeg|gif|png)$/, nil ]
 
   # Return the full name of the Student
   def full_name

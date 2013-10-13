@@ -1,0 +1,34 @@
+<%= semantic_form_for student do |student_form| %>
+<%= student_form.inputs do %>
+<h3>Basic Information</h3>
+<p>Fill out some basic information about yourself here.</p><br />
+<%= student_form.input :first_name %>
+<%= student_form.input :last_name %>
+<%= student_form.input :email %>
+<%= student_form.input :school %>
+<%= student_form.input :avatar, :hint => student_form.template.image_tag(@student.avatar(:square_thumb)) %>
+
+<h4>Address</h4>
+<%= student_form.input :address1 %>
+<%= student_form.input :address2 %>
+<%= student_form.input :city %>
+<%= student_form.input :state %>
+<%= student_form.input :zip %>
+<%= student_form.input :country %>
+
+<h4>Password</h4>
+<p>Enter in a new password if you'd like to change it.</p><br />
+<%= student_form.input :password %>
+<%= student_form.input :password_confirmation %>
+
+<hr />
+<h3>Tell us about yourself...</h3>
+<%= student_form.input :about_me %>
+
+
+<hr />
+<% end %>
+<%= student_form.actions  %>
+<% end %>
+
+

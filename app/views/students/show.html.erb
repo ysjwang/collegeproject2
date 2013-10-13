@@ -1,53 +1,57 @@
 <div class="container">
 	<div id="content">
-    	<h2><%= @student.first_name %>'s Profile</h2>
-        
-        <div class="column-left">
-        	<img src="http://placehold.it/150x150">
+     <h2><%= @student.first_name %>'s Profile</h2>
+
+     <div class="column-left">
+
+        <ul class="profile-facts">
+            <% if current_student == @student %>
+            <%= link_to "Edit Profile", edit_student_path(@student), class: "btn" %>
+            <% end %>
+            <%= image_tag(@student.avatar(:square)) %>
+
+
+            <li class="my-name"><%= @student.full_name %></li>
+            <li class="my-tag">Bad Astronaut</li>
             
-            <ul class="profile-facts">
-            	<li class="my-name"><%= @student.full_name %></li>
-                <li class="my-tag">Bad Astronaut</li>
-                
-                <br />
-                <strong>Unique Facts</strong>
-                <li><%= @student.school %></li>
-                <li><%= @student.email %></li>
-				<li><%= simple_format(@student.about_me) %></li>
-                
-                <hr />
-                <strong>My Communities</strong>
-                <li>Boston, New York City</li>
-                
-                <hr />
-                <strong>My Organizations</strong>
-				
-                <li>
-					<% @student.communities.each do |community| %>
-					<%= link_to community.name, community %>,
-					<% end %>
-				</li>
-                
-            </ul>
 
-				<% if current_student == @student %>
-				<%= link_to "[Edit]", edit_student_path(@student) %>
-				<% end %>
-        </div>
+            <br />
+            <strong>Unique Facts</strong>
+            <li><%= @student.school %></li>
+            <li><%= @student.email %></li>
+            <li><%= simple_format(@student.about_me) %></li>
 
-		<div class="column-right">
-			<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</div>
-        
+            <hr />
+            <strong>My Communities</strong>
+            <li>Boston, New York City</li>
 
-        
+            <hr />
+            <strong>My Organizations</strong>
 
-        <div class="push"></div>
+            <li>
+             <% @student.communities.each do |community| %>
+             <%= link_to community.name, community %>,
+             <% end %>
+         </li>
 
-	
-        
-    </div>
+     </ul>
+
+
+ </div>
+
+ <div class="column-right">
+   <p>
+       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+   </p>
+</div>
+
+
+
+
+<div class="push"></div>
+
+
+
+</div>
 </div>
 

@@ -7,12 +7,13 @@
 
 			<br /><br />
 			<ul class="profile-facts">
+				<% if current_cbo == @cbo %>
+				<%= link_to "[Edit Organization]", edit_cbo_path(@cbo), class: "btn" %>
+				<% end %>
 				<li class="my-name">
 					<%= @cbo.name %>
 
-					<% if current_cbo == @cbo %>
-					<%= link_to "[Edit]", edit_cbo_path(@cbo) %>
-					<% end %>
+					
 
 				</li>
 				<li class="my-tag"><%= @cbo.category_list.map{|category| category}.join(", ") %></li>
